@@ -1,4 +1,28 @@
 
 .weather-app {
-    
+    box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+    border-radius: 10px;
+    padding: 25px;
+    margin: auto 45px;
+    background-color: aqua;
+}
+
+.search-form {
+    text-align: center;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.iconed-temp {
+    display: flex;
+    font-weight: 900;
+    font-size: xx-large;
+    justify-content: center;
 }
