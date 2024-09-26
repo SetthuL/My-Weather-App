@@ -3,7 +3,7 @@
     box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
     border-radius: 10px;
     padding: 25px;
-    margin: auto 45px;
+    margin: auto 50px;
     background-color: aqua;
 }
 
@@ -11,7 +11,24 @@
     text-align: center;
     padding: 10px;
 }
+.search-input {
+    font-size: 16px;
+    padding: 9px;
+    width: 75%;
+    border-radius: 6px;
+    color: rgb(7, 1, 16);
+    background-color: bisque;
+}
+.search-button {
+    padding: 9px;
+    border-radius: 6px;
+    color: rgb(7, 1, 16);
+    background-color: bisque;
+}
 
+main {
+    padding: 30px;
+}
 h1 {
     text-align: center;
 }

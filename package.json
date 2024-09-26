@@ -1,0 +1,16 @@
+{
+  "name": "ops-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "weather.html",
+  "scripts": {
+    "start": "parcel weather.html --open",
+    "build": "parcel build weather.html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": []
+}

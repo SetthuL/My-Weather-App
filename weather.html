@@ -3,28 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/weather.css">
     <title>My weather App</title>
   </head>
   <body>
     <div class="weather-app">
     <header>
-      <form>
-        <div class="search-form">
-        <input type="search" placeholder="Enter a city.." required />
-        <input type="submit" value="Search" />
-    </div>
+      <form id="search-form">
+        <input type="search" placeholder="Enter a city.." required class="search-input" id="search-input" />
+        <input type="submit" value="Search" class="search-button" />
       </form>
     </header>
+
     <main>
         <div class="current-weather">
-            <h1>Johannesburg</h1>
+            <h1 id="current-city">Johannesburg</h1>
         <p>
-            Saturday 15:32, most sunny <br />
+           <span id="current-date"></span> Saturday 15:32, most sunny <br />
              Humidity:<strong> 52%</strong>, Wind: <strong>7.2km/h</strong>
         </p>
         </div>
-        <div class="iconed-temp">☀️ 26°C</div>
+        <div class="iconed-temp">☀️ <span id="current-temparature">26°C</span></div>
         </main>
     <footer>
       <p>
@@ -37,4 +37,5 @@
     </footer>
     </div>
   </body>
+    <script src="src/weather.js"></script>
 </html>
