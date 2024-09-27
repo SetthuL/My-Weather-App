@@ -2,10 +2,10 @@
   "name": "ops-challenge",
   "version": "1.0.0",
   "description": "",
-  "main": "weather.html",
+  "main": "index.html",
   "scripts": {
-    "start": "parcel weather.html --open",
-    "build": "parcel build weather.html"
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
   },
   "dependencies": {},
   "devDependencies": {
