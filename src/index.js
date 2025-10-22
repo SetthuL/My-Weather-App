@@ -1,6 +1,5 @@
 function refreshWeather(response) {
   let temperatureElement = document.querySelector("#current-temperature");
-  let temperature = response.data.temperature;
   let cityElement = document.querySelector("#current-city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
@@ -9,13 +8,22 @@ function refreshWeather(response) {
   let dateElement = document.querySelector("#current-date");
   let iconElement = document.querySelector("#icon");
 
-  cityElement.innerHTML = response.data.city;
+  let temperature = response.data.main.temp;
+  let city = response.data.name;
+  let description = response.data.weather[0].description;
+  let humidity = response.data.main.humidity;
+  let speed = response.data.wind.speed;
+  let iconCode = response.data.weather[0].icon;
+  let iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+
+  cityElement.innerHTML = city;
   timeElement.innerHTML = formatDate(new Date());
-  descriptionElement.innerHTML = response.data.condition.description;
-  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
-  speedElement.innerHTML = `${response.data.wind.speed} km/h`;
+  descriptionElement.innerHTML = description;
+  humidityElement.innerHTML = `${humidity}%`;
+  speedElement.innerHTML = `${speed} km/h`;
   temperatureElement.innerHTML = Math.round(temperature);
-  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon" />`;
+  iconElement.innerHTML = `<img src="${iconUrl}" class="weather-icon"/>`;
 }
 
 function formatDate(date) {
@@ -40,9 +48,12 @@ function formatDate(date) {
 }
 
 function searchCity(city) {
-  let apiKey = "c3f61ob3a9e36ad964fd78t24e0619f3";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiKey = "489a3bb050f56c279586eaa0b982d18e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(refreshWeather);
+
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrlForecast).then(displayForecast);
 }
 
 function handleSearchSubmit(event) {
@@ -56,3 +67,29 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Johannesburg");
+
+function displayForecast(response) {
+  let forecastContainer = document.querySelector("#forecast");
+  forecastContainer.innerHTML = "";
+
+  let forecastList = response.data.list;
+
+  let dailyForecasts = forecastList.filter((forecast, index) => index % 8 === 0).slice(0, 6);
+  
+  dailyForecasts.forEach(dayForecast => {
+    let date = new Date(dayForecast.dt * 1000);
+    let dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][date.getDay()];
+    let temp = Math.round(dayForecast.main.temp);
+    let icon = dayForecast.weather[0].icon;
+    let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+    forecastContainer.innerHTML += `
+      <div class="forecast-day">
+        <div>${dayName}</div>
+        <img src="${iconUrl}" alt="${dayForecast.weather[0].description}" />
+
+        <div>${temp}°C</div>
+      </div>
+    `;
+  });
+}
