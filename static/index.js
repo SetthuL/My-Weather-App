@@ -48,12 +48,13 @@ function formatDate(date) {
 }
 
 function searchCity(city) {
-  let apiKey = "489a3bb050f56c279586eaa0b982d18e";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(refreshWeather);
+  axios.get(`/api/weather?city=${city}`)
+    .then(refreshWeather)
+    .catch(error => console.error("Weather API error:", error));
 
-  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrlForecast).then(displayForecast);
+  axios.get(`/api/forecast?city=${city}`)
+    .then(displayForecast)
+    .catch(error => console.error("Forecast API error:", error));
 }
 
 function handleSearchSubmit(event) {
