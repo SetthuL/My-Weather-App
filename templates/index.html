@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>My weather App</title>
   </head>
@@ -33,16 +34,25 @@
             </div>
             <div id="forecast" class="forecast-container"></div>
         </main>
+        </div>
     <footer>
-      <p>
-        This project was coded by
-        <a href="https://github.com/SetthuL" target="_blank">SetthuL</a> and is on
-        <a href="https://github.com/SetthuL/My-Weather-App" target="_blank"> GitHub</a> hosted on 
-        <a href="https://chic-unicorn-fca12a.netlify.app/" target="_blank">Netlify</a>
-      </p>
-    
+      <div class="contact-links">
+        <a
+          href="https://www.linkedin.com/in/siphosethu-l-b52812262"
+          target="_blank"
+          ><i class="fab fa-linkedin"></i></a
+        >
+        <a href="tel:+27658460173"><i class="fas fa-phone-alt"></i></a>
+        <a href="mailto:langesiphosethu@gmail.com" target="_blank"
+          ><i class="fas fa-envelope"></i></a
+        >
+        <a href="https://github.com/SetthuL" target="_blank"
+          ><i class="fab fa-github"></i></a
+        >
+      </div>
+        <p>&copy; 2025 coded by Lange B Siphosethu </p>
     </footer>
-    </div>
+    
   </body>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
 
